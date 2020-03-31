@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:museum_app/manager/TourManager.dart';
-import 'package:museum_app/ui/ToursScreen.dart';
+import 'package:museum_app/ui/widget/ToursWidget.dart';
 import 'package:museum_app/ui/widget/AppDrawer.dart';
 import 'package:museum_app/utility/Provider.dart';
 
@@ -12,7 +12,6 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
-
     return DefaultTabController(
       length: 2,
       child: Scaffold(
@@ -43,18 +42,18 @@ class _HomePageState extends State<HomePage> {
               },
             ),
             IconButton(
-                icon: Icon(
-                  Icons.refresh,
-                  color: Colors.white,
-                  size: 25,
-                ),
-                onPressed: () {
-                  setState(() {
-                    print('Update');
-                    ToursScreen();
-                  });
-                },
-    ),
+              icon: Icon(
+                Icons.refresh,
+                color: Colors.white,
+                size: 25,
+              ),
+              onPressed: () {
+                setState(() {
+                  print('Update');
+                  ToursWidget();
+                });
+              },
+            ),
           ],
           bottom: TabBar(
             tabs: <Widget>[
@@ -66,10 +65,16 @@ class _HomePageState extends State<HomePage> {
         drawer: AppDrawer(),
         body: TabBarView(
           children: <Widget>[
-            ToursScreen(),
+            ToursWidget(),
             Padding(
               padding: const EdgeInsets.all(5.0),
-              child: Text('dgdfddg'),
+              child: Center(
+                child: Icon(
+                  Icons.tag_faces,
+                  size: 120.0,
+                  color: Theme.of(context).cardColor,
+                ),
+              ),
             )
           ],
         ),

@@ -14,7 +14,6 @@ class TourListBuilder extends StatelessWidget {
     return Observer<List<Tour>>(
       stream: stream,
       onSuccess: (BuildContext context, List<Tour> data) {
-        print(data);
         return builder(context, data);
       },
 

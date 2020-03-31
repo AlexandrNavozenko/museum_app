@@ -28,6 +28,7 @@ dependencies:
   http: ^0.12.0+4
   font_awesome_flutter: ^8.7.0
   rxdart:
+  flutter_html: ^0.11.1
 
 dev_dependencies:
   flutter_test:
@@ -47,12 +48,8 @@ flutter:
 
   # To add assets to your application, add an assets section, like this:
   assets:
-   - assets/images/museum_1.jpg
-   - assets/images/museum_2.jpg
-   - assets/images/museum_3.jpg
-   - assets/images/museum_4.jpg
-   - assets/images/museum_5.jpg
-   - assets/images/museum_logo.jpg
+   - assets/images/
+
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

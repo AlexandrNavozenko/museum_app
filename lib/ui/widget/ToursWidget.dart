@@ -4,7 +4,7 @@ import 'package:museum_app/manager/TourManager.dart';
 import 'package:museum_app/ui/widget/CardWidget.dart';
 import 'package:museum_app/utility/Provider.dart';
 
-class ToursScreen extends StatelessWidget {
+class ToursWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     TourManager manager = Provider.of(context).fetch(TourManager);

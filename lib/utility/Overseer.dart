@@ -1,3 +1,4 @@
+import 'package:museum_app/manager/TourDetailManager.dart';
 import 'package:museum_app/manager/TourManager.dart';
 
 class Overseer {
@@ -5,6 +6,7 @@ class Overseer {
 
   Overseer() {
     register(TourManager, TourManager());
+    register(TourDetailManager, TourDetailManager());
   }
 
   register(name, object) {

@@ -1,16 +1,14 @@
-
 import 'dart:convert';
-
 import 'package:museum_app/model/Tour.dart';
 import 'package:http/http.dart' as http;
 
 class TourService {
-  static String _url = 'http://www.mocky.io/v2/5e7b791f2d00005c6311a17c';
+  static String _url = 'http://www.mocky.io/v2/5e821ed22f000053002fb8c1';
 
   static Future<List<Tour>> browse({String filter}) async {
     http.Response response = await http.get(_url);
 
-    await Future.delayed(Duration(seconds: 3));
+    await Future.delayed(Duration(seconds: 1));
 
     String content = response.body;
 
@@ -23,5 +21,4 @@ class TourService {
 
     return _tours.toList();
   }
-
 }

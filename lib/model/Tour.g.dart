@@ -12,11 +12,9 @@ Tour _$TourFromJson(Map<String, dynamic> json) {
     json['name'] as String,
     json['time'] as String,
     json['points'] as String,
-    json['picture'] as String,
     json['city'] as String,
     json['state'] as String,
     json['distance'] as String,
-    json['keyboard'] as String,
   );
 }
 
@@ -28,6 +26,4 @@ Map<String, dynamic> _$TourToJson(Tour instance) => <String, dynamic>{
       'distance': instance.distance,
       'time': instance.time,
       'points': instance.points,
-      'picture': instance.picture,
-      'keyboard': instance.keyboard,
     };
