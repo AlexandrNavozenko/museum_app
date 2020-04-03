@@ -18,8 +18,13 @@ class CardWidget extends StatelessWidget {
       ),
       child: ListTile(
         onTap: () {
-          Navigator.push(context, MaterialPageRoute(
-              builder: (BuildContext context) => TourDetailPage(tour: tour,)),
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (BuildContext context) => TourDetailPage(
+                tour: tour,
+              ),
+            ),
           );
         },
         title: Container(
@@ -35,7 +40,12 @@ class CardWidget extends StatelessWidget {
         ),
         subtitle: TourInfoWidget(tour: tour),
         trailing: Container(
-          child: Icon(Icons.check_circle_outline),
+          child: Icon(
+            Icons.check_circle_outline,
+            color: tour.purchased_id_fk != null
+                ? Colors.green
+                : Theme.of(context).cardColor,
+          ),
         ),
       ),
     );

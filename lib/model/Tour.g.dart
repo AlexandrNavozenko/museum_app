@@ -15,6 +15,7 @@ Tour _$TourFromJson(Map<String, dynamic> json) {
     json['city'] as String,
     json['state'] as String,
     json['distance'] as String,
+    json['purchased_id_fk'] as String,
   );
 }
 
@@ -26,4 +27,5 @@ Map<String, dynamic> _$TourToJson(Tour instance) => <String, dynamic>{
       'distance': instance.distance,
       'time': instance.time,
       'points': instance.points,
+      'purchased_id_fk': instance.purchased_id_fk,
     };

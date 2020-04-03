@@ -3,9 +3,11 @@ import 'package:museum_app/model/Tour.dart';
 import 'package:http/http.dart' as http;
 
 class TourService {
-  static String _url = 'http://www.mocky.io/v2/5e821ed22f000053002fb8c1';
+  static String _url = 'http://www.mocky.io/v2/5e8354bb3000007400cf3cf3';
 
   static Future<List<Tour>> browse({String filter}) async {
+
+
     http.Response response = await http.get(_url);
 
     await Future.delayed(Duration(seconds: 1));
@@ -13,6 +15,7 @@ class TourService {
     String content = response.body;
 
     List collection = json.decode(content);
+    print(collection);
     Iterable<Tour> _tours = collection.map((_) => Tour.fromJson(_));
 
     if (filter != null && filter.isNotEmpty) {

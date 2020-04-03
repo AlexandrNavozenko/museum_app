@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:museum_app/ui/Demo.dart';
 import 'package:museum_app/ui/HomePage.dart';
 import 'package:museum_app/utility/Overseer.dart';
 import 'package:museum_app/utility/Provider.dart';
@@ -18,7 +17,8 @@ class StoreApp extends StatelessWidget {
           primarySwatch: Colors.blue,
           primaryColor: Colors.blueAccent,
           cardColor: Colors.black54,
-          accentColor: Color(0xFFEDF0F6),
+          accentColor: Colors.blue,
+//          accentColor: Color(0xFFEDF0F6),
         ),
         home: HomePage(),
         debugShowCheckedModeBanner: false,

@@ -1,9 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_html/rich_text_parser.dart';
 import 'package:museum_app/builder/TourDetailBuilder.dart';
 import 'package:museum_app/model/Tour.dart';
 import 'package:museum_app/service/TourDetailService.dart';
+import 'package:museum_app/ui/Demo.dart';
+import 'package:museum_app/ui/TourPurchasedPage.dart';
 import 'package:museum_app/ui/widget/TourInfoWidget.dart';
 import 'package:flutter_html/flutter_html.dart';
 
@@ -62,17 +63,37 @@ class CartDetailWidget extends StatelessWidget {
               width: double.infinity,
               height: 50,
 //              margin: EdgeInsets.symmetric(vertical: 5.0),
-              child: RaisedButton(
-                onPressed: () {},
-                color: Colors.greenAccent,
-                child: Text(
-                  'START TOUR',
-                  style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      color: Colors.black54,
-                      fontSize: 20.0),
-                ),
-              ),
+              child: tour.purchased_id_fk != null
+                  ? RaisedButton(
+                      onPressed: () {
+                        return Navigator.push(
+                          context,
+                          MaterialPageRoute(
+//                            builder: (BuildContext context) => TourPurchasedPAge(tour: tour),
+                            builder: (BuildContext context) => Demo(),
+                          ),
+                        );
+                      },
+                      color: Colors.greenAccent,
+                      child: Text(
+                        'START TOUR',
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            color: Colors.black54,
+                            fontSize: 20.0),
+                      ),
+                    )
+                  : RaisedButton(
+                      onPressed: () => print('Need to buy tour'),
+                      color: Colors.redAccent,
+                      child: Text(
+                        'BUY TOUR',
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            color: Colors.white70,
+                            fontSize: 20.0),
+                      ),
+                    ),
             ),
           ],
         );

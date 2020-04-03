@@ -11,9 +11,10 @@ class Tour {
   final String distance;
   final String time;
   final String points;
+  final String purchased_id_fk;
 
   Tour(this.id, this.name, this.time, this.points, this.city,
-      this.state, this.distance);
+      this.state, this.distance, this.purchased_id_fk);
 
   factory Tour.fromJson(Map<String, dynamic> json) => _$TourFromJson(json);
 
