@@ -1,10 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:museum_app/builder/TourDetailBuilder.dart';
-import 'package:museum_app/model/Tour.dart';
+import 'package:museum_app/models/Tour.dart';
 import 'package:museum_app/service/TourDetailService.dart';
 import 'package:museum_app/ui/Demo.dart';
-import 'package:museum_app/ui/TourPurchasedPage.dart';
 import 'package:museum_app/ui/widget/TourInfoWidget.dart';
 import 'package:flutter_html/flutter_html.dart';
 

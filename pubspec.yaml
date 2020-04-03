@@ -29,8 +29,8 @@ dependencies:
   font_awesome_flutter: ^8.7.0
   rxdart:
   flutter_html: ^0.11.1
-  sqflite: any
-  path_provider: any
+  sqflite: ^1.3.0
+  path_provider: ^1.6.5
 
 dev_dependencies:
   flutter_test:

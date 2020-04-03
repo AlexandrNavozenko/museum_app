@@ -1,6 +1,6 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
-import 'package:museum_app/model/TourDetail.dart';
+import 'package:museum_app/models/TourDetail.dart';
 
 class TourDetailService {
   static String _url = 'http://www.mocky.io/v2/5e833fe83100005b00e6449f';

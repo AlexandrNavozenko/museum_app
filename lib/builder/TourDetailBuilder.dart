@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:museum_app/model/TourDetail.dart';
+import 'package:museum_app/models/TourDetail.dart';
 import 'package:museum_app/utility/ObserverFuture.dart';
 
 class TourDetailBuilder extends StatelessWidget {

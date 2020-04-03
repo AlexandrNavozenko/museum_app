@@ -1,5 +1,5 @@
 import 'dart:async';
-import 'package:museum_app/model/Tour.dart';
+import 'package:museum_app/models/Tour.dart';
 import 'package:museum_app/service/TourService.dart';
 import 'package:rxdart/rxdart.dart';
 

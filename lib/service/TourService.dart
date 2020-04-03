@@ -1,5 +1,5 @@
 import 'dart:convert';
-import 'package:museum_app/model/Tour.dart';
+import 'package:museum_app/models/Tour.dart';
 import 'package:http/http.dart' as http;
 
 class TourService {
