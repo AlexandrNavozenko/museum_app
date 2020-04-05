@@ -14,8 +14,14 @@ class TourManager {
   Stream<List<Tour>> get browse$ => _collectionSubject.stream;
 
   TourManager() {
-    _filterSubject.debounceTime(Duration(milliseconds: 500)).listen((filter) async {
-      var tours = await TourService.browse(filter: filter);
+//    _filterSubject.debounceTime(Duration(milliseconds: 500)).listen((filter) async {
+//      var tours = await TourService.browse(filter: filter);
+//      _collectionSubject.add(tours);
+
+    _filterSubject.debounceTime(Duration(milliseconds: 500))
+        .switchMap((filter) async* {
+      yield await TourService.browse(filter: filter);
+    }).listen((tours) async {
       _collectionSubject.add(tours);
     });
 

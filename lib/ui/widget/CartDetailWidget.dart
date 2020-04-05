@@ -1,11 +1,18 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:museum_app/builder/TourDetailBuilder.dart';
+import 'package:museum_app/models/DBTourName.dart';
+import 'package:museum_app/models/DBTourDetail.dart';
+import 'package:museum_app/models/DBTourName.dart';
 import 'package:museum_app/models/Tour.dart';
+import 'package:museum_app/models/TourDetail.dart';
+import 'package:museum_app/service/DBTourNameService.dart';
 import 'package:museum_app/service/TourDetailService.dart';
 import 'package:museum_app/ui/Demo.dart';
+import 'package:museum_app/ui/HomePage.dart';
 import 'package:museum_app/ui/widget/TourInfoWidget.dart';
 import 'package:flutter_html/flutter_html.dart';
+import 'package:museum_app/utility/DBProvider.dart';
 
 class CartDetailWidget extends StatelessWidget {
   final Tour tour;
@@ -65,17 +72,19 @@ class CartDetailWidget extends StatelessWidget {
               child: tour.purchased_id_fk != null
                   ? RaisedButton(
                       onPressed: () {
+                        _select();
+                        _saveTour(tour);
+                        _saveTourDetail(tourDetail);
                         return Navigator.push(
                           context,
                           MaterialPageRoute(
-//                            builder: (BuildContext context) => TourPurchasedPAge(tour: tour),
-                            builder: (BuildContext context) => Demo(),
+                            builder: (BuildContext context) => HomePage(),
                           ),
                         );
                       },
                       color: Colors.greenAccent,
                       child: Text(
-                        'START TOUR',
+                        'DOWNLOAD TOUR',
                         style: TextStyle(
                             fontWeight: FontWeight.bold,
                             color: Colors.black54,
@@ -98,5 +107,41 @@ class CartDetailWidget extends StatelessWidget {
         );
       },
     );
+  }
+
+  void _saveTourDetail(TourDetail tourDetail) async {
+//    DBTourDetail tourDetailDB = DBTourDetail(
+//        id: int.parse(tourDetail.id),
+//        tourNameIdFk: int.parse(tourDetail.tourname_id_fk),
+//        description: tourDetail.description,
+//        useGpsMap: false,
+//        picture: tourDetail.imageUrl);
+//
+//
+//    print(await DBProvider.insert(DBTourDetail.table, tourDetailDB));
+  }
+
+  void _saveTour(Tour tour) async {
+    DBTourName tourDB = DBTourName(
+        id: int.parse(tour.id),
+        purchasedIdFk: int.parse(tour.purchased_id_fk),
+        name: tour.name,
+        city: tour.city,
+        state: tour.state,
+        distance: tour.distance,
+        points: int.parse(tour.points),
+        time: tour.time);
+
+    try {
+      var id = await DBProvider.insert(DBTourName.table, tourDB);
+      print(id);
+    } catch (ex) {
+      print('This tour has already been downloaded');
+    }
+  }
+
+  void _select() async {
+    List<Map<String, dynamic>> _dbToursName = await DBProvider.query(DBTourName.table);
+    print(_dbToursName.length);
   }
 }

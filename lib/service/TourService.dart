@@ -7,7 +7,6 @@ class TourService {
 
   static Future<List<Tour>> browse({String filter}) async {
 
-
     http.Response response = await http.get(_url);
 
     await Future.delayed(Duration(seconds: 1));
@@ -15,7 +14,7 @@ class TourService {
     String content = response.body;
 
     List collection = json.decode(content);
-    print(collection);
+
     Iterable<Tour> _tours = collection.map((_) => Tour.fromJson(_));
 
     if (filter != null && filter.isNotEmpty) {

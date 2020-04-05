@@ -1,3 +1,4 @@
+import 'package:museum_app/manager/DBTourManager.dart';
 import 'package:museum_app/manager/TourManager.dart';
 
 class Overseer {
@@ -5,6 +6,7 @@ class Overseer {
 
   Overseer() {
     register(TourManager, TourManager());
+    register(DBTourManager, DBTourManager());
   }
 
   register(name, object) {

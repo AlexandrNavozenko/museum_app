@@ -1,9 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:museum_app/ui/HomePage.dart';
+import 'package:museum_app/utility/DBProvider.dart';
 import 'package:museum_app/utility/Overseer.dart';
 import 'package:museum_app/utility/Provider.dart';
 
-void main() => runApp(StoreApp());
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  await DBProvider.init();
+  runApp(StoreApp());
+}
 
 class StoreApp extends StatelessWidget {
 
