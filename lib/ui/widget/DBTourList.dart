@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:museum_app/builder/DBTourListBuilder.dart';
 import 'package:museum_app/manager/DBTourManager.dart';
-import 'package:museum_app/ui/widget/CardWidget.dart';
+import 'package:museum_app/ui/widget/DBCardWidget.dart';
 import 'package:museum_app/utility/Provider.dart';
 
 class DBTourList extends StatelessWidget {
@@ -18,7 +18,7 @@ class DBTourList extends StatelessWidget {
           shrinkWrap: true,
           itemCount: dbTours?.length ?? 0,
           itemBuilder: (BuildContext context, int index) {
-            return CardWidget(tour: dbTours[index]);
+            return DBCardWidget(dbTour: dbTours[index]);
           },
         );
       },

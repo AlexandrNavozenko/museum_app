@@ -5,12 +5,12 @@ import 'package:rxdart/rxdart.dart';
 
 class TourManager {
   final PublishSubject<String> _filterSubject = PublishSubject<String>();
-//  final PublishSubject<int> _countSubject = PublishSubject<int>();
+  final PublishSubject<int> _countSubject = PublishSubject<int>();
   final PublishSubject<List<Tour>> _collectionSubject = PublishSubject<List<Tour>>();
 
   Sink<String> get inFilter => _filterSubject.sink;
 
-//  Stream<int> get count$ => _countSubject.stream;
+  Stream<int> get count$ => _countSubject.stream;
   Stream<List<Tour>> get browse$ => _collectionSubject.stream;
 
   TourManager() {
@@ -25,7 +25,7 @@ class TourManager {
       _collectionSubject.add(tours);
     });
 
-//    _collectionSubject.listen((list) => _countSubject.add(list.length));
+    _collectionSubject.listen((list) => _countSubject.add(list.length));
   }
 
   void dispose() {

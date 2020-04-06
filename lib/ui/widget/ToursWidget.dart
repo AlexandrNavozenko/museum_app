@@ -1,8 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:museum_app/ui/widget/DBTourCounter.dart';
 import 'package:museum_app/ui/widget/DBTourList.dart';
+import 'package:museum_app/ui/widget/TourCounter.dart';
 import 'package:museum_app/ui/widget/TourList.dart';
 
 class ToursWidget extends StatelessWidget {
+  final bool isInternal;
+
+  const ToursWidget({this.isInternal});
+
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
@@ -13,7 +19,7 @@ class ToursWidget extends StatelessWidget {
             width: double.infinity,
             height: 250,
             child: Image.asset(
-              'assets/images/museum_logo.jpg',
+              isInternal ? 'assets/images/museum_5.jpg' : 'assets/images/museum_logo.jpg',
               fit: BoxFit.cover,
             ),
           ),
@@ -34,15 +40,11 @@ class ToursWidget extends StatelessWidget {
                       fontSize: 20,
                       color: Colors.black45),
                 ),
-                Icon(
-                  Icons.map,
-                  size: 25.0,
-                  color: Colors.black45,
-                ),
+                isInternal ? DBTourCounter() : TourCounter(),
               ],
             ),
           ),
-          TourList(),
+          isInternal ? DBTourList() : TourList(),
         ],
       ),
     );

@@ -33,11 +33,15 @@ class DBTourNameService {
     );
 
     try {
-      var id = await DBProvider.insert(DBTourName.table, tourDB);
-      print(id);
+      await DBProvider.insert(DBTourName.table, tourDB);
+      List<Map<String, dynamic>> selectAll = await DBProvider.query(DBTourName.table);
+      print(selectAll.isNotEmpty ? selectAll.length : 0);
     } catch (ex) {
       print('This tour has already been downloaded');
     }
   }
 
+  static void deleteDBTour(DBTourName dbTour) async {
+    await DBProvider.delete(DBTourName.table, dbTour);
+  }
 }

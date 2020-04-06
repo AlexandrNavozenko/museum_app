@@ -1,7 +1,7 @@
 import 'package:flutter_html/flutter_html.dart';
 import 'package:museum_app/models/DBModelDefault.dart';
 
-class DBTourDetail extends DBModelDefault {
+class Test extends DBModelDefault {
   static String table = 'tour_detail';
 
   int id;
@@ -10,12 +10,12 @@ class DBTourDetail extends DBModelDefault {
   bool useGpsMap;
   String description;
 
-  DBTourDetail({
+  Test({
     this.id,
     this.tourNameIdFk,
     this.picture,
     this.useGpsMap,
-    this.description,
+    this.description
   });
 
   Map<String, dynamic> toMap() {
@@ -36,8 +36,8 @@ class DBTourDetail extends DBModelDefault {
     return map;
   }
 
-  static DBTourDetail fromMap(Map<String, dynamic> map) {
-    return DBTourDetail(
+  static Test fromMap(Map<String, dynamic> map) {
+    return Test(
         id: map['id'],
         tourNameIdFk: map['tourname_id_fk'],
         description: map['description'],

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:museum_app/manager/TourManager.dart';
+import 'package:museum_app/ui/widget/DBTourCounter.dart';
 import 'package:museum_app/ui/widget/ToursWidget.dart';
 import 'package:museum_app/ui/widget/AppDrawer.dart';
 import 'package:museum_app/utility/Provider.dart';
@@ -10,6 +11,8 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  int _selectedIndex = 0;
+
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
@@ -56,29 +59,29 @@ class _HomePageState extends State<HomePage> {
             ),
           ],
           bottom: TabBar(
+            onTap: _onBarItemTap,
             tabs: <Widget>[
               Tab(text: 'TOURS'),
-              Tab(text: 'INFORMATION'),
+              Tab(
+                text: 'LOADED TOUR',
+              ),
             ],
           ),
         ),
         drawer: AppDrawer(),
         body: TabBarView(
           children: <Widget>[
-            ToursWidget(),
-            Padding(
-              padding: const EdgeInsets.all(5.0),
-              child: Center(
-                child: Icon(
-                  Icons.tag_faces,
-                  size: 120.0,
-                  color: Theme.of(context).cardColor,
-                ),
-              ),
-            )
+            ToursWidget(isInternal: false),
+            ToursWidget(isInternal: true),
           ],
         ),
       ),
     );
+  }
+
+  void _onBarItemTap(int value) {
+    setState(() {
+      _selectedIndex = value;
+    });
   }
 }
