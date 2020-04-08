@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:museum_app/models/DBTourName.dart';
-import 'package:museum_app/ui/widget/DBCartDetailWidget.dart';
+import 'package:museum_app/ui/widget/DBCardDetailWidget.dart';
 
 class DBTourDetailPage extends StatelessWidget {
-  final DBTourName dbTour;
+  final DBTourName dbTourName;
 
-  const DBTourDetailPage({this.dbTour});
+  const DBTourDetailPage({this.dbTourName});
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +22,7 @@ class DBTourDetailPage extends StatelessWidget {
           ),
         ],
       ),
-      body: DBCartDetailWidget(dbTour: dbTour),
+      body: DBCartDetailWidget(dbTourName: dbTourName),
     );
   }
 }

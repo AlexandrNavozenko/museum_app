@@ -1,28 +1,22 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:museum_app/builder/TourDetailBuilder.dart';
+import 'package:museum_app/builder/DBTourDetailBuilder.dart';
 import 'package:museum_app/models/DBTourName.dart';
-import 'package:museum_app/models/DBTourDetail.dart';
-import 'package:museum_app/models/DBTourName.dart';
-import 'package:museum_app/models/Tour.dart';
-import 'package:museum_app/models/TourDetail.dart';
-import 'package:museum_app/service/DBTourNameService.dart';
-import 'package:museum_app/service/TourDetailService.dart';
-import 'package:museum_app/ui/Demo.dart';
-import 'package:museum_app/ui/HomePage.dart';
+import 'package:museum_app/service/DBTourDetailService.dart';
+import 'package:museum_app/ui/TourInfoPage.dart';
 import 'package:museum_app/ui/widget/DBTourInfoWidget.dart';
 import 'package:flutter_html/flutter_html.dart';
 
 class DBCartDetailWidget extends StatelessWidget {
-  final DBTourName dbTour;
+  final DBTourName dbTourName;
 
-  const DBCartDetailWidget({this.dbTour});
+  const DBCartDetailWidget({this.dbTourName});
 
   @override
   Widget build(BuildContext context) {
-    return TourDetailBuilder(
-      future: TourDetailService.browse(tourId: dbTour.id.toString()), // QWERTY
-      builder: (content, tourDetail) {
+    return DBTourDetailBuilder(
+      future: DBTourDetailService.browse(dbTourId: dbTourName.id),
+      builder: (content, dbTourDetail) {
         return Column(
           children: <Widget>[
             Expanded(
@@ -33,14 +27,14 @@ class DBCartDetailWidget extends StatelessWidget {
                       width: double.infinity,
                       height: 250,
                       child: Image.asset(
-                        'assets/images/${tourDetail.imageUrl}',
+                        'assets/images/${dbTourDetail.picture}',
                         fit: BoxFit.cover,
                       ),
                     ),
                     Container(
                       padding: EdgeInsets.symmetric(vertical: 10.0),
                       child: Text(
-                        dbTour.name,
+                        dbTourName.name,
                         style: TextStyle(
                           fontSize: 20.0,
                           color: Theme.of(context).cardColor,
@@ -50,10 +44,10 @@ class DBCartDetailWidget extends StatelessWidget {
                       ),
                     ),
                     Divider(),
-                    DBTourInfoWidget(dbTour: dbTour),
+                    DBTourInfoWidget(dbTour: dbTourName),
                     Divider(),
                     Html(
-                      data: tourDetail.description,
+                      data: dbTourDetail.description,
                       padding: EdgeInsets.all(10.0),
                       defaultTextStyle: TextStyle(
                         fontSize: 20.0,
@@ -74,7 +68,7 @@ class DBCartDetailWidget extends StatelessWidget {
                   return Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (BuildContext context) => Demo(),
+                      builder: (BuildContext context) => TourInfoPage(),
                     ),
                   );
                 },

@@ -3,6 +3,18 @@ import 'package:museum_app/models/TourDetail.dart';
 import 'package:museum_app/utility/DBProvider.dart';
 
 class DBTourDetailService {
+
+  static Future<DBTourDetail> browse({int dbTourId}) async {
+
+    List collection = await DBProvider.query(DBTourDetail.table);
+
+    await Future.delayed(Duration(seconds: 3));
+
+    Iterable<DBTourDetail> _dbToursDetail = collection.map((_) => DBTourDetail.fromMap(_));
+
+    return _dbToursDetail.toList().singleWhere((dbToursDetail) => dbToursDetail.tourNameIdFk == dbTourId, orElse: () => null);
+  }
+
   static void save({TourDetail tourDetail}) async {
 
     DBTourDetail dbTourDetail = DBTourDetail(

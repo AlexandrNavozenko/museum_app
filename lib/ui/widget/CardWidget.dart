@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:museum_app/builder/DBTourNameBuilder.dart';
 import 'package:museum_app/models/Tour.dart';
+import 'package:museum_app/service/DBTourNameService.dart';
+import 'package:museum_app/ui/DBTourDetailPage.dart';
 import 'package:museum_app/ui/TourDetailPage.dart';
+import 'package:museum_app/ui/widget/DBCardDetailWidget.dart';
 import 'package:museum_app/ui/widget/TourInfoWidget.dart';
 
 class CardWidget extends StatelessWidget {
@@ -21,9 +25,7 @@ class CardWidget extends StatelessWidget {
           Navigator.push(
             context,
             MaterialPageRoute(
-              builder: (BuildContext context) => TourDetailPage(
-                tour: tour,
-              ),
+              builder: (BuildContext context) => TourDetailPage(tour: tour),
             ),
           );
         },

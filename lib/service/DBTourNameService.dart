@@ -8,7 +8,7 @@ class DBTourNameService {
 
     List collection = await DBProvider.query(DBTourName.table);
 
-    await Future.delayed(Duration(seconds: 3));
+    await Future.delayed(Duration(seconds: 1));
 
     Iterable<DBTourName> _dbToursName = collection.map((_) => DBTourName.fromMap(_));
 
@@ -17,6 +17,18 @@ class DBTourNameService {
     }
 
     return _dbToursName.toList();
+  }
+
+  static Future<DBTourName> singleBrowse({String tourId}) async {
+    List collection = await DBProvider.query(DBTourName.table);
+
+    if (collection.isNotEmpty) {
+//      await Future.delayed(Duration(seconds: 3));
+      Iterable<DBTourName> _dbToursName = collection.map((_) => DBTourName.fromMap(_));
+      return _dbToursName.toList().singleWhere((dbTourName) => dbTourName.id == int.parse(tourId), orElse: () => null);
+    }
+
+    return null;
   }
 
   static void save({Tour tour}) async {
