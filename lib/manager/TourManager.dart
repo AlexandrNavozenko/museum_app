@@ -1,9 +1,10 @@
 import 'dart:async';
 import 'package:museum_app/models/Tour.dart';
 import 'package:museum_app/service/TourService.dart';
+import 'package:museum_app/utility/Manager.dart';
 import 'package:rxdart/rxdart.dart';
 
-class TourManager {
+class TourManager implements Manager {
   final PublishSubject<String> _filterSubject = PublishSubject<String>();
   final PublishSubject<int> _countSubject = PublishSubject<int>();
   final PublishSubject<List<Tour>> _collectionSubject = PublishSubject<List<Tour>>();

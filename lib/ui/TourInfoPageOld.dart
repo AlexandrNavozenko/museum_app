@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:museum_app/ui/HomePage.dart';
-import 'package:museum_app/ui/widget/RatingBarWidget.dart';
+import 'package:museum_app/ui/widget/TourInfoFeedbackWidget.dart';
 
 class TourInfoPageOld extends StatelessWidget {
   @override
@@ -129,7 +129,7 @@ class TourInfoPageOld extends StatelessWidget {
                   SizedBox(
                     height: 5.0,
                   ),
-                  RatingBarWidget(),
+                  TourInfoFeedbackWidget(),
                 ],
               ),
             ),

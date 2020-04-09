@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_html/flutter_html.dart';
 import 'package:museum_app/ui/HomePage.dart';
+import 'package:museum_app/ui/widget/TourInfoFeedbackWidget.dart';
 import 'package:museum_app/ui/widget/TourInfoMailWidget.dart';
 import 'package:museum_app/ui/widget/TourInfoSitesWidget.dart';
 
@@ -29,13 +30,7 @@ class _TourInfoPageState extends State<TourInfoPage> {
       body: [
         TourInfoSitesWidget(),
         TourInfoMainWidget(),
-        Center(
-          child: Icon(
-            Icons.star,
-            size: 100.0,
-            color: Colors.black45,
-          ),
-        ),
+        TourInfoFeedbackWidget(),
       ].elementAt(_selectedIndex),
       bottomNavigationBar: BottomNavigationBar(
         items: <BottomNavigationBarItem>[
